@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IconButton, PlayButton, Indicator } from "../Buttons/Buttons";
 import './style.scss';
 
 const Slider = ({ data }) => {
     const [activeId, setActiveId] = useState(0);
     const [isPlaying, setIsPlaying] = useState(true);
+    const sliderRef = useRef(null);
     
 const prev = () => {
     if (activeId > 0) {
@@ -36,8 +37,8 @@ useEffect(() => {
         setIsPlaying(!isPlaying);
     };
 
-    const handleIndicatorClick = (index) => {
-        setActiveId(index);
+    const handleIndicatorClick = (idx) => {
+        setActiveId(idx);
     };
 
     const handleSwipe = (e) => {
@@ -55,10 +56,10 @@ useEffect(() => {
             direction = "right";
             }
 
-            if (direction === "left") {
-            next();
-            } else if (direction === "right") {
-            prev();
+            if (direction === "left" && activeId < data.length - 1) {
+                next();
+                } else if (direction === "right" && activeId > 0) {
+                prev();
             }
 
             document.removeEventListener("touchend", handleSwipeEnd);
@@ -68,7 +69,7 @@ useEffect(() => {
     };
 
     return (
-        <div className="slider-wrap">
+        <div className="slider-wrap" onTouchMove={(e) => handleSwipe(e)}>
             <div className="slider-actions">
             <IconButton
                 direction="left"
@@ -91,7 +92,7 @@ useEffect(() => {
             />
             </div>
 
-            <div className="slider">
+            <div className="slider" ref={sliderRef}>
             {data.map((slide, idx) => (
                 <div
                 key={idx}
