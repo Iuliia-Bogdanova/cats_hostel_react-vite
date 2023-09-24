@@ -1,9 +1,12 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Сайт-визитка хостела для котиков 'Happy Cats'  
 
-Currently, two official plugins are available:
+ReactJS + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-"# cats_hostel_react-vite" 
+Роутинг по 3 страницам, адаптив под разные размеры устройств.  
+
+2 страница - галерея котиков, написана на ванильном JS.  
+При загрузке включается автопроигрывание слайдера, которое можно отключить кнопкой "котик".  
+Возможно пролистывание слайдов вправо или влево кнопками "лапки" с остановкой на последнеи или 1 слайде соответвтвенно.  
+Пагинация под слайдером указывает на текущий слайд, можно пролистывать слайды вперемешку при помощи кнопок пагинации.

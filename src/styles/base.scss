@@ -44,7 +44,7 @@ button:focus, button:active {
 }
 
 body::-webkit-scrollbar {
-    background: inherit;
+    background: var(--font-color-header);
     width: 10px;
 }
 
