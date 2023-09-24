@@ -40,52 +40,82 @@ useEffect(() => {
         setActiveId(index);
     };
 
+    const handleSwipe = (e) => {
+        const touch = e.touches[0];
+        const startX = touch.clientX;
+        let direction;
+
+        const handleSwipeEnd = (e) => {
+            const touch = e.changedTouches[0];
+            const endX = touch.clientX;
+
+            if (endX > startX) {
+            direction = "left";
+            } else if (endX < startX) {
+            direction = "right";
+            }
+
+            if (direction === "left") {
+            next();
+            } else if (direction === "right") {
+            prev();
+            }
+
+            document.removeEventListener("touchend", handleSwipeEnd);
+        };
+
+        document.addEventListener("touchend", handleSwipeEnd);
+    };
+
     return (
         <div className="slider-wrap">
             <div className="slider-actions">
-                <IconButton
-                    direction="left"
-                    onClick={prev}
-                    disable={activeId === 0}
-                />
+            <IconButton
+                direction="left"
+                onClick={prev}
+                onTouchEnd={handleSwipe}
+                disable={activeId === 0}
+            />
 
-                <PlayButton
-                    active={isPlaying ? "active" : ""}
-                    disable={false}
-                    onClick={togglePlaying}
-                />
+            <PlayButton
+                active={isPlaying ? "active" : ""}
+                disable={false}
+                onClick={togglePlaying}
+            />
 
-                <IconButton
-                    direction="right"
-                    onClick={next}
-                    disable={activeId === data.length - 1}
-                />
+            <IconButton
+                direction="right"
+                onClick={next}
+                onTouchEnd={handleSwipe}
+                disable={activeId === data.length - 1}
+            />
             </div>
-            
+
             <div className="slider">
-                {data.map((slide, idx) => (
-                    <div
-                    key={idx}
-                    className={`slide${idx === activeId ? " active" : ""}`}
-                    >
-                    <div className="slide__info">
-                        <div className="slide__name">{slide.name}</div>
-                        <div className="slide__text">{slide.text}</div>
-                    </div>
-                    <img src={slide.img} alt={`Slide ${idx + 1}`} />
-                    </div>
-                ))}
+            {data.map((slide, idx) => (
+                <div
+                key={idx}
+                className={`slide${idx === activeId ? " active" : ""}`}
+                >
+                <div className="slide__info">
+                    <div className="slide__name">{slide.name}</div>
+                    <div className="slide__text">{slide.text}</div>
+                </div>
+                <img src={slide.img} alt={`Slide ${idx + 1}`} />
+                </div>
+            ))}
             </div>
 
             <div className="slide-indicators">
-                {data.map((slide, idx) => (
-                    <Indicator
-                    key={idx}
-                    active={idx === activeId ? "active" : ""}
-                    onClick={handleIndicatorClick}
-                    index={idx}
-                    />
-                ))}
+            {data.map((slide, idx) => (
+                <Indicator
+                key={idx}
+                active={idx === activeId ? "active" : ""}
+                onClick={handleIndicatorClick}
+                onTouchEnd={() => handleIndicatorClick(idx)}
+                index={idx}
+                />
+            ))}
             </div>
         </div>
     );
