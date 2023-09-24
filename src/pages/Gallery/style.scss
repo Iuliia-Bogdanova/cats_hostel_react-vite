@@ -1,0 +1,19 @@
+.main-gallery {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: var(--font-color-header);
+}
+
+.button-box {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}

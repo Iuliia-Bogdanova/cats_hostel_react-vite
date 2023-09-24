@@ -1,0 +1,123 @@
+.icon-button,
+.play-button {
+    width: 36px;
+    height: 36px;
+    margin-top: 6px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+.icon-button.left,
+.icon-button.left.disable {
+    background-image: url(../../assets/icons/pets-left.svg);    
+}
+
+.icon-button.left:hover {
+    background-image: url(../../assets/icons/pets_active-left.svg);
+}
+
+.icon-button.right,
+.icon-button.right.disable {
+    background-image: url(../../assets/icons/pets-right.svg);
+}
+
+.icon-button.right:hover {
+    background-image: url(../../assets/icons/pets_active-right.svg);
+}
+
+.icon-button.left.disabled,
+.icon-button.right.disabled {
+    pointer-events: none;
+}
+
+.play-button,
+.play-button.disable {
+    width: 50px;
+    height: 50px;
+    margin-top: 0px;
+    background-image: url(../../assets/icons/cat_active.svg);
+}
+
+.play-button.active {
+    background-image: url(../../assets/icons/cat.svg);
+}
+
+.icon-button.left:hover,
+.icon-button.right:hover,
+.play-button:hover {
+    transform: scale(.9);
+    opacity: 0.8;
+}
+
+.slide-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: var(--bg-header);
+}
+
+.indicator.active,
+.indicator:hover {
+    background-color: var(--font-color);
+}
+
+@media (max-width: 768px) {
+    .icon-button {
+        width: 30px;
+        height: 30px;
+    }
+    .play-button {
+        width: 40px;
+        height: 40px;
+    }
+    .indicator {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .icon-button {
+        width: 24px;
+        height: 24px;
+    }
+    .play-button {
+        width: 30px;
+        height: 30px;
+    }
+    .slide-indicators {
+        gap: 14px;
+    }
+    .indicator {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 410px) {
+    .icon-button {
+        width: 22px;
+        height: 22px;
+    }
+    .play-button {
+        width: 28px;
+        height: 28px;
+    }
+    .slide-indicators {
+        gap: 10px;
+    }
+    .indicator {
+        margin: 0 3px;
+    }
+}
