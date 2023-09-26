@@ -71,6 +71,9 @@
         gap: 40px;
         top: -40px;
     }
+    .slide {
+        height: 40vw;
+    }
     .slide__info {
         left: 14px;
         top: 14px;
@@ -89,7 +92,7 @@
         opacity: 0;
     }
     .slide.active {
-        flex-grow: 20;
+        flex-grow: 40;
         opacity: 1;
     }
     .slide__info {
@@ -108,5 +111,11 @@
     .slider-actions {
         gap: 26px;
         top: -26px;
+    }
+    .slide {
+        height: 70vw;
+    }
+    .slide.active {
+        flex-grow: 60;
     }
 }
