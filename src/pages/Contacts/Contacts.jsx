@@ -1,6 +1,33 @@
+import { useEffect } from "react";
 import "./style.scss";
 
 const Contacts = () => {
+    useEffect(() => {
+        ymaps.ready(init);
+
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [56.86519426, 53.11315898],
+                zoom: 14,
+            });
+
+            var myPlacemark = new ymaps.Placemark(
+                [56.86519426, 53.11315898],
+                {},
+                {
+                    preset: "islands#grayDotIcon",
+                }
+            );
+            
+            myMap.controls.remove("geolocationControl");
+            myMap.controls.remove("searchControl");
+            myMap.controls.remove("trafficControl");
+            myMap.behaviors.disable(["scrollZoom"]);
+
+            myMap.geoObjects.add(myPlacemark);
+        }
+    }, []);
+
     return (
         <main className="main">
             <article className="contacts">
@@ -62,6 +89,6 @@ const Contacts = () => {
             </article>
         </main>
     );
-}
+};
 
 export default Contacts;
